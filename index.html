@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Viera Local connects apartment residents around Viera Town Center with neighbors, nearby communities, local places, plans, and the Viera Local Passport."
+  />
+  <title>Viera Local | Your Community Beyond Your Building</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="site-shell">
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="Viera Local home">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-mark__sun"></span>
+          <span class="brand-mark__water"></span>
+        </span>
+        <span class="brand-copy">
+          <strong>Viera Local</strong>
+          <small>Meet nearby. Live locally.</small>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primaryNav"
+        aria-label="Open navigation"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="primary-nav" id="primaryNav" aria-label="Primary navigation">
+        <a href="#neighborhood">Neighborhood</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#passport">Passport</a>
+        <a href="#groups">Groups</a>
+        <a class="nav-cta" href="#join">Join Viera Local</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section">
+        <div class="hero__content">
+          <p class="eyebrow">A neighborhood network for Viera Town Center residents</p>
+          <h1>Your community beyond your building.</h1>
+          <p class="hero__lead">
+            Meet neighbors from your apartment and nearby communities, make plans around the district, discover Lakeside Social and The Avenue Viera,
+            and collect rewards with the Viera Local Passport.
+          </p>
+
+          <div class="hero__actions">
+            <a class="button button--primary" href="#join">Become a Founding Local</a>
+            <a class="button button--secondary" href="#dashboard">Preview the Dashboard</a>
+          </div>
+
+          <div class="hero__communities" aria-label="Founding apartment communities">
+            <span>Starting with</span>
+            <strong>Luna</strong>
+            <span>•</span>
+            <strong>The Pearl</strong>
+            <span>•</span>
+            <strong>Centre Pointe</strong>
+            <span>•</span>
+            <strong>Marisol</strong>
+          </div>
+        </div>
+
+        <div class="hero__visual" aria-label="Illustrated Viera Local neighborhood">
+          <div class="sun-orb"></div>
+          <div class="cloud cloud--one"></div>
+          <div class="cloud cloud--two"></div>
+
+          <div class="scene-card scene-card--apartments">
+            <span class="scene-card__label">Home</span>
+            <div class="building-row">
+              <span class="building building--one"></span>
+              <span class="building building--two"></span>
+              <span class="building building--three"></span>
+            </div>
+          </div>
+
+          <div class="scene-card scene-card--lakeside">
+            <span class="scene-card__label">Meet at Lakeside</span>
+            <div class="mini-lake">
+              <span class="mini-lake__sun"></span>
+              <span class="mini-lake__dock"></span>
+            </div>
+          </div>
+
+          <div class="scene-card scene-card--passport">
+            <span class="passport-icon">✓</span>
+            <span>
+              <strong>Passport Stamp</strong>
+              <small>Beyond Your Building</small>
+            </span>
+          </div>
+
+          <div class="scene-people" aria-hidden="true">
+            <span class="person person--one"></span>
+            <span class="person person--two"></span>
+            <span class="person person--three"></span>
+            <span class="dog"></span>
+          </div>
+
+          <div class="scene-ground"></div>
+          <div class="scene-water"></div>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-label="Viera Local benefits">
+        <div>
+          <strong>Meet nearby</strong>
+          <span>Connect with residents in your building and beyond it.</span>
+        </div>
+        <div>
+          <strong>Make a plan</strong>
+          <span>Turn “we should do something” into an actual neighborhood meetup.</span>
+        </div>
+        <div>
+          <strong>Explore locally</strong>
+          <span>See what is happening within walking distance.</span>
+        </div>
+      </section>
+
+      <section class="section section--soft" id="neighborhood">
+        <div class="section-heading">
+          <p class="eyebrow">The founding district</p>
+          <h2>Four communities. One neighborhood.</h2>
+          <p>
+            Viera Local begins with residents living around Viera Town Center and
+            the nearby places that already give the district a natural social center.
+          </p>
+        </div>
+
+        <div class="community-grid">
+          <article class="community-card" data-community="Luna at Viera">
+            <div class="community-card__top">
+              <span class="community-number">01</span>
+              <span class="community-status">Founding community</span>
+            </div>
+            <h3>Luna at Viera</h3>
+            <p>Your home community and the first place Viera Local begins growing.</p>
+            <button class="text-button community-select" type="button">
+              Join from Luna <span>→</span>
+            </button>
+          </article>
+
+          <article class="community-card" data-community="The Pearl of Viera">
+            <div class="community-card__top">
+              <span class="community-number">02</span>
+              <span class="community-status">Nearby community</span>
+            </div>
+            <h3>The Pearl of Viera</h3>
+            <p>Connect residents with nearby neighbors, shared interests, and local plans.</p>
+            <button class="text-button community-select" type="button">
+              Join from The Pearl <span>→</span>
+            </button>
+          </article>
+
+          <article class="community-card" data-community="Centre Pointe">
+            <div class="community-card__top">
+              <span class="community-number">03</span>
+              <span class="community-status">Nearby community</span>
+            </div>
+            <h3>Centre Pointe</h3>
+            <p>Bring another apartment community into one shared walkable district.</p>
+            <button class="text-button community-select" type="button">
+              Join from Centre Pointe <span>→</span>
+            </button>
+          </article>
+
+          <article class="community-card" data-community="Marisol at Viera">
+            <div class="community-card__top">
+              <span class="community-number">04</span>
+              <span class="community-status">Nearby community</span>
+            </div>
+            <h3>Marisol at Viera</h3>
+            <p>Help neighbors meet, make plans, and feel connected beyond the property line.</p>
+            <button class="text-button community-select" type="button">
+              Join from Marisol <span>→</span>
+            </button>
+          </article>
+        </div>
+
+        <p class="independent-note">
+          Viera Local is an independent community project and is not currently affiliated
+          with or endorsed by the apartment communities listed above.
+        </p>
+      </section>
+
+      <section class="section places-section">
+        <div class="section-heading section-heading--split">
+          <div>
+            <p class="eyebrow">Meet in the middle</p>
+            <h2>A walkable district with places to gather.</h2>
+          </div>
+          <p>
+            The neighborhood already has waterfront gatherings, food, fitness, a dog park,
+            and an entire outdoor shopping and entertainment district. Viera Local connects
+            nearby residents to all of it.
+          </p>
+        </div>
+
+        <div class="places-grid">
+          <article class="place-card place-card--featured">
+            <div class="place-card__art place-card__art--lake">
+              <span class="place-badge">Neighborhood hub</span>
+              <span class="lake-art__sun"></span>
+              <span class="lake-art__water"></span>
+              <span class="lake-art__dock"></span>
+            </div>
+            <div class="place-card__body">
+              <p class="place-type">Waterfront gathering</p>
+              <h3>Lakeside Social</h3>
+              <p>Casual meetups, live events, food, sunset plans, and a natural place to convene.</p>
+              <button class="text-button plan-button" type="button" data-plan="Meet Me at Lakeside">
+                Make a plan here <span>→</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="place-card avenue-card">
+            <div class="place-card__art place-card__art--avenue">
+              <span class="place-badge">Shopping & entertainment district</span>
+              <span class="avenue-store avenue-store--one"></span>
+              <span class="avenue-store avenue-store--two"></span>
+              <span class="avenue-store avenue-store--three"></span>
+              <span class="avenue-fountain"></span>
+              <span class="avenue-palm avenue-palm--one"></span>
+              <span class="avenue-palm avenue-palm--two"></span>
+            </div>
+            <div class="place-card__body">
+              <p class="place-type">80+ shops, restaurants & activities</p>
+              <h3>The Avenue Viera</h3>
+              <p>Movie nights, restaurant crawls, shopping challenges, Central Park meetups, family events, fitness activities, and Passport partner offers.</p>
+              <button class="text-button plan-button" type="button" data-plan="Explore The Avenue">
+                Explore activity ideas <span>→</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="place-card">
+            <div class="place-card__art place-card__art--food">
+              <span class="place-art-icon">🍽️</span>
+            </div>
+            <div class="place-card__body">
+              <p class="place-type">Food & social</p>
+              <h3>Urban Prime</h3>
+              <p>Dinner groups, coffee conversations, tastings, and casual neighborhood meetups.</p>
+              <button class="text-button plan-button" type="button" data-plan="Meet at Urban Prime">
+                Make a plan here <span>→</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="place-card">
+            <div class="place-card__art place-card__art--fitness">
+              <span class="place-art-icon">🏃</span>
+            </div>
+            <div class="place-card__body">
+              <p class="place-type">Fitness & wellness</p>
+              <h3>Sweat Haven</h3>
+              <p>Find workout partners, join classes together, or build a neighborhood fitness group.</p>
+              <button class="text-button plan-button" type="button" data-plan="Workout at Sweat Haven">
+                Make a plan here <span>→</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="place-card">
+            <div class="place-card__art place-card__art--dog">
+              <span class="place-art-icon">🐕</span>
+            </div>
+            <div class="place-card__body">
+              <p class="place-type">Free community space</p>
+              <h3>Dog Park</h3>
+              <p>An easy, no-pressure meeting spot for neighbors, dogs, and recurring walking groups.</p>
+              <button class="text-button plan-button" type="button" data-plan="Dog Park Meetup">
+                Make a plan here <span>→</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--dark" id="dashboard">
+        <div class="section-heading section-heading--light">
+          <p class="eyebrow">Dashboard preview</p>
+          <h2>One place for life around your neighborhood.</h2>
+          <p>
+            Residents see what is happening inside their own community, across the district,
+            and in the places they can walk to.
+          </p>
+        </div>
+
+        <div class="dashboard-shell">
+          <aside class="dashboard-sidebar">
+            <div class="dashboard-brand">
+              <span class="dashboard-brand__mark">VL</span>
+              <span>
+                <strong>Viera Local</strong>
+                <small>Resident dashboard</small>
+              </span>
+            </div>
+
+            <nav class="dashboard-nav" aria-label="Dashboard preview">
+              <button class="dashboard-nav__item is-active" type="button" data-dashboard-tab="home">
+                <span>⌂</span> Home
+              </button>
+              <button class="dashboard-nav__item" type="button" data-dashboard-tab="community">
+                <span>⌁</span> My Community
+              </button>
+              <button class="dashboard-nav__item" type="button" data-dashboard-tab="district">
+                <span>◎</span> The District
+              </button>
+              <button class="dashboard-nav__item" type="button" data-dashboard-tab="passport">
+                <span>✦</span> My Passport
+              </button>
+            </nav>
+
+            <button class="dashboard-new-plan plan-button" type="button" data-plan="New neighborhood plan">
+              + Make a Plan
+            </button>
+          </aside>
+
+          <div class="dashboard-main">
+            <div class="dashboard-topbar">
+              <div>
+                <p>Friday, neighborhood</p>
+                <h3>Good afternoon, Local.</h3>
+              </div>
+              <div class="avatar-stack" aria-label="Residents nearby">
+                <span>JD</span>
+                <span>KM</span>
+                <span>AL</span>
+                <span>+12</span>
+              </div>
+            </div>
+
+            <div class="dashboard-panel is-active" data-dashboard-panel="home">
+              <div class="dashboard-grid dashboard-grid--top">
+                <article class="dash-card dash-card--welcome">
+                  <div>
+                    <p class="dash-label">Around the district</p>
+                    <h4>What should we do tonight?</h4>
+                    <p>Three nearby plans are looking for neighbors to join.</p>
+                  </div>
+                  <button class="small-button plan-button" type="button" data-plan="Tonight in Viera">
+                    See tonight
+                  </button>
+                </article>
+
+                <article class="dash-card dash-card--passport-mini">
+                  <div class="mini-progress-ring">
+                    <span>3/5</span>
+                  </div>
+                  <div>
+                    <p class="dash-label">Your Passport</p>
+                    <h4>Two stamps until your first reward.</h4>
+                    <button class="inline-link dashboard-tab-link" type="button" data-dashboard-tab="passport">
+                      View Passport
+                    </button>
+                  </div>
+                </article>
+              </div>
+
+              <div class="dashboard-grid dashboard-grid--lower">
+                <article class="dash-card">
+                  <div class="dash-card__heading">
+                    <div>
+                      <p class="dash-label">My community</p>
+                      <h4>Luna at Viera</h4>
+                    </div>
+                    <button class="icon-button" type="button" aria-label="More options">•••</button>
+                  </div>
+
+                  <div class="activity-list">
+                    <div class="activity-item">
+                      <span class="activity-icon">👋</span>
+                      <div>
+                        <strong>Two new resident introductions</strong>
+                        <small>Meet Morgan and Chris</small>
+                      </div>
+                      <span class="activity-time">New</span>
+                    </div>
+
+                    <div class="activity-item">
+                      <span class="activity-icon">☀️</span>
+                      <div>
+                        <strong>Poolside meetup</strong>
+                        <small>Friday at 6:00 PM</small>
+                      </div>
+                      <span class="activity-time">8 going</span>
+                    </div>
+
+                    <div class="activity-item">
+                      <span class="activity-icon">🏋️</span>
+                      <div>
+                        <strong>Looking for a workout partner</strong>
+                        <small>Weekday mornings</small>
+                      </div>
+                      <span class="activity-time">Reply</span>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="dash-card">
+                  <div class="dash-card__heading">
+                    <div>
+                      <p class="dash-label">Nearby plans</p>
+                      <h4>Happening around you</h4>
+                    </div>
+                    <button class="inline-link dashboard-tab-link" type="button" data-dashboard-tab="district">
+                      View all
+                    </button>
+                  </div>
+
+                  <div class="plan-list">
+                    <button class="plan-row plan-button" type="button" data-plan="Sunset Dog Walk">
+                      <span class="plan-date"><strong>28</strong><small>JUL</small></span>
+                      <span class="plan-info">
+                        <strong>Sunset Dog Walk</strong>
+                        <small>Dog Park · 7:15 PM</small>
+                      </span>
+                      <span class="plan-join">Join</span>
+                    </button>
+
+                    <button class="plan-row plan-button" type="button" data-plan="Meet Me at Lakeside">
+                      <span class="plan-date"><strong>30</strong><small>JUL</small></span>
+                      <span class="plan-info">
+                        <strong>Meet Me at Lakeside</strong>
+                        <small>Lakeside Social · 6:30 PM</small>
+                      </span>
+                      <span class="plan-join">Join</span>
+                    </button>
+
+                    <button class="plan-row plan-button" type="button" data-plan="Movie & Dinner Night">
+                      <span class="plan-date"><strong>01</strong><small>AUG</small></span>
+                      <span class="plan-info">
+                        <strong>Movie & Dinner Night</strong>
+                        <small>The Avenue · 6:15 PM</small>
+                      </span>
+                      <span class="plan-join">Join</span>
+                    </button>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="dashboard-panel" data-dashboard-panel="community">
+              <article class="dash-card dash-card--full">
+                <p class="dash-label">My community</p>
+                <h4>Luna at Viera resident board</h4>
+                <p class="panel-intro">
+                  Posts here stay inside your selected apartment community.
+                </p>
+
+                <div class="feed-card">
+                  <span class="feed-avatar">MS</span>
+                  <div>
+                    <strong>Morgan S.</strong>
+                    <small>New resident · 18 minutes ago</small>
+                    <p>
+                      Hi everyone! I just moved in and would love to find a few people
+                      for weekend coffee or walks around the district.
+                    </p>
+                    <button type="button">Welcome Morgan</button>
+                  </div>
+                </div>
+
+                <div class="feed-card">
+                  <span class="feed-avatar">JT</span>
+                  <div>
+                    <strong>Jordan T.</strong>
+                    <small>Resident · 1 hour ago</small>
+                    <p>
+                      Is anyone interested in starting a casual monthly game night?
+                    </p>
+                    <button type="button">I’m interested</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="dashboard-panel" data-dashboard-panel="district">
+              <article class="dash-card dash-card--full">
+                <p class="dash-label">The district</p>
+                <h4>Plans across nearby communities</h4>
+                <p class="panel-intro">
+                  These plans are open to verified residents throughout the founding district.
+                </p>
+
+                <div class="district-cards">
+                  <button class="district-plan plan-button" type="button" data-plan="Trivia Team Needed">
+                    <span>🧠</span>
+                    <strong>Trivia Team Needed</strong>
+                    <small>2 open spots · Thursday</small>
+                  </button>
+
+                  <button class="district-plan plan-button" type="button" data-plan="Remote Workers Lunch">
+                    <span>💻</span>
+                    <strong>Remote Workers Lunch</strong>
+                    <small>Urban Prime · Wednesday</small>
+                  </button>
+
+                  <button class="district-plan plan-button" type="button" data-plan="New to Viera Meetup">
+                    <span>🌴</span>
+                    <strong>New to Viera Meetup</strong>
+                    <small>Lakeside · Saturday</small>
+                  </button>
+                </div>
+              </article>
+            </div>
+
+            <div class="dashboard-panel" data-dashboard-panel="passport">
+              <article class="dash-card dash-card--full">
+                <div class="passport-panel-heading">
+                  <div>
+                    <p class="dash-label">Viera Local Passport</p>
+                    <h4>Your founding collection</h4>
+                  </div>
+                  <span class="passport-level">Level 1 · Founding Local</span>
+                </div>
+
+                <div class="passport-stamp-grid">
+                  <div class="passport-stamp is-earned">
+                    <span>✓</span>
+                    <strong>Founding Local</strong>
+                    <small>Joined the launch</small>
+                  </div>
+                  <div class="passport-stamp is-earned">
+                    <span>👋</span>
+                    <strong>Hello, Neighbor</strong>
+                    <small>Shared an introduction</small>
+                  </div>
+                  <div class="passport-stamp is-earned">
+                    <span>🏙️</span>
+                    <strong>Beyond Your Building</strong>
+                    <small>Connected across communities</small>
+                  </div>
+                  <div class="passport-stamp">
+                    <span>🌅</span>
+                    <strong>Meet Me at Lakeside</strong>
+                    <small>Attend a gathering</small>
+                  </div>
+                  <div class="passport-stamp">
+                    <span>🐾</span>
+                    <strong>Dog Park Local</strong>
+                    <small>Join a dog walk</small>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="passport">
+        <div class="passport-feature">
+          <div class="passport-feature__copy">
+            <p class="eyebrow">Viera Local Passport</p>
+            <h2>Meet. Explore. Collect.</h2>
+            <p>
+              Earn stamps by meeting neighbors, attending plans, exploring the district,
+              supporting local places, and helping build a stronger neighborhood.
+            </p>
+
+            <ul class="feature-checklist">
+              <li>Reward participation, not only spending</li>
+              <li>Create fun apartment-to-apartment challenges</li>
+              <li>Unlock local perks, giveaways, badges, and special invitations</li>
+            </ul>
+
+            <a class="button button--primary" href="#join">Start as a Founding Local</a>
+          </div>
+
+          <div class="passport-book" aria-label="Viera Local Passport preview">
+            <div class="passport-book__cover">
+              <span class="passport-book__seal">VL</span>
+              <small>NEIGHBORHOOD PASSPORT</small>
+              <h3>Viera Local</h3>
+              <p>Founding District Edition</p>
+              <div class="passport-book__waves"></div>
+            </div>
+
+            <div class="passport-book__page">
+              <div class="passport-page-top">
+                <span>STAMP COLLECTION</span>
+                <strong>03 / 07</strong>
+              </div>
+
+              <div class="passport-page-grid">
+                <span class="passport-page-stamp is-earned">FOUNDING<br />LOCAL</span>
+                <span class="passport-page-stamp is-earned">HELLO<br />NEIGHBOR</span>
+                <span class="passport-page-stamp is-earned">BEYOND YOUR<br />BUILDING</span>
+                <span class="passport-page-stamp">MEET ME AT<br />LAKESIDE</span>
+                <span class="passport-page-stamp">DOG PARK<br />LOCAL</span>
+                <span class="passport-page-stamp">LOCAL<br />EXPLORER</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section pass-model-section">
+        <div class="section-heading section-heading--split">
+          <div>
+            <p class="eyebrow">A proven local-pass model</p>
+            <h2>A free Passport—and eventually a paid local Pass.</h2>
+          </div>
+          <p>The community Passport rewards participation. A limited annual Viera Local Pass could later offer single-use deals from participating restaurants, shops, wellness businesses, and entertainment partners throughout the district.</p>
+        </div>
+
+        <div class="pass-model-grid">
+          <article class="pass-model-card">
+            <span class="pass-model-card__tag">Free community layer</span>
+            <div class="pass-model-icon">✓</div>
+            <h3>Viera Local Passport</h3>
+            <p>Earn digital stamps for joining meetups, exploring nearby places, welcoming neighbors, supporting local businesses, and completing district challenges.</p>
+            <ul><li>Included for residents</li><li>Participation-based stamps</li><li>Badges, drawings, and community rewards</li><li>Apartment and district challenges</li></ul>
+          </article>
+
+          <article class="pass-model-card pass-model-card--paid">
+            <span class="pass-model-card__tag">Future annual product</span>
+            <div class="pass-model-icon">VL</div>
+            <h3>Viera Local Pass</h3>
+            <p>A limited annual pass with one-time partner offers designed to encourage residents to try more nearby restaurants, shops, services, and activities.</p>
+            <ul><li>One clear offer per participating location</li><li>Single-use redemption with simple restrictions</li><li>Annual validity and limited quantity</li><li>Direct, trackable value for local partners</li></ul>
+          </article>
+        </div>
+
+        <div class="partner-offers-preview">
+          <div class="partner-offers-heading"><div><p class="eyebrow">Illustrative offer preview</p><h3>What a district-wide pass could feel like</h3></div><span>Concept offers—not active promotions</span></div>
+          <div class="offer-grid">
+            <article class="offer-ticket"><span class="offer-ticket__category">Dining</span><h4>Buy one entrée, receive a second offer</h4><p>One-time use · Equal or lesser value · Partner terms apply</p><strong>THE AVENUE</strong></article>
+            <article class="offer-ticket"><span class="offer-ticket__category">Entertainment</span><h4>Neighborhood movie-night perk</h4><p>One-time use · Select dates · Advance activation may apply</p><strong>LOCAL FUN</strong></article>
+            <article class="offer-ticket"><span class="offer-ticket__category">Wellness</span><h4>Try a nearby class or service</h4><p>One-time use · New or returning local customers</p><strong>MOVE LOCAL</strong></article>
+            <article class="offer-ticket"><span class="offer-ticket__category">Discovery</span><h4>Explore-and-collect partner challenge</h4><p>Visit participating locations to unlock a district reward</p><strong>VIERA LOCAL</strong></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--soft" id="groups">
+        <div class="section-heading">
+          <p class="eyebrow">Find your people nearby</p>
+          <h2>Start with an interest. End with a real plan.</h2>
+          <p>
+            Choose the kinds of groups you would actually join. Early interest will help
+            decide which community activities launch first.
+          </p>
+        </div>
+
+        <div class="interest-grid">
+          <button class="interest-chip" type="button" data-interest="Dog Parents">
+            <span>🐕</span> Dog Parents
+          </button>
+          <button class="interest-chip" type="button" data-interest="Walking & Running">
+            <span>🚶</span> Walking & Running
+          </button>
+          <button class="interest-chip" type="button" data-interest="Fitness & Wellness">
+            <span>💪</span> Fitness & Wellness
+          </button>
+          <button class="interest-chip" type="button" data-interest="Foodies">
+            <span>🍴</span> Foodies
+          </button>
+          <button class="interest-chip" type="button" data-interest="Coffee & Conversation">
+            <span>☕</span> Coffee & Conversation
+          </button>
+          <button class="interest-chip" type="button" data-interest="Live Music">
+            <span>🎵</span> Live Music
+          </button>
+          <button class="interest-chip" type="button" data-interest="Trivia & Games">
+            <span>🎲</span> Trivia & Games
+          </button>
+          <button class="interest-chip" type="button" data-interest="Remote Workers">
+            <span>💻</span> Remote Workers
+          </button>
+          <button class="interest-chip" type="button" data-interest="Parents & Families">
+            <span>👨‍👩‍👧</span> Parents & Families
+          </button>
+          <button class="interest-chip" type="button" data-interest="New to Viera">
+            <span>🌴</span> New to Viera
+          </button>
+          <button class="interest-chip" type="button" data-interest="Veterans">
+            <span>⭐</span> Veterans
+          </button>
+          <button class="interest-chip" type="button" data-interest="Local Creatives">
+            <span>🎨</span> Local Creatives
+          </button>
+        </div>
+      </section>
+
+      <section class="section join-section" id="join">
+        <div class="join-copy">
+          <p class="eyebrow">Help build it from the beginning</p>
+          <h2>Become a Founding Local.</h2>
+          <p>
+            Join the interest list, tell us what you would use, and help shape the first
+            neighborhood network built for residents across this walkable district.
+          </p>
+
+          <div class="founding-benefits">
+            <div>
+              <span>01</span>
+              <p><strong>Be first in your community</strong><br />Help decide what launches first.</p>
+            </div>
+            <div>
+              <span>02</span>
+              <p><strong>Receive a founding Passport stamp</strong><br />Start your collection early.</p>
+            </div>
+            <div>
+              <span>03</span>
+              <p><strong>Join early local plans</strong><br />Meet people before the full dashboard launches.</p>
+            </div>
+          </div>
+        </div>
+
+        <form class="join-form" id="joinForm">
+          <div class="form-heading">
+            <span class="form-step">Founding member interest</span>
+            <h3>Tell us a little about you.</h3>
+          </div>
+
+          <div class="form-row">
+            <label>
+              First name
+              <input type="text" name="firstName" placeholder="Your first name" required />
+            </label>
+
+            <label>
+              Email
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
+          </div>
+
+          <label>
+            Your apartment community
+            <select name="community" id="communitySelect" required>
+              <option value="">Choose your community</option>
+              <option value="Luna at Viera">Luna at Viera</option>
+              <option value="The Pearl of Viera">The Pearl of Viera</option>
+              <option value="Centre Pointe">Centre Pointe</option>
+              <option value="Marisol at Viera">Marisol at Viera</option>
+              <option value="Another nearby community">Another nearby community</option>
+              <option value="Local business or organization">Local business or organization</option>
+            </select>
+          </label>
+
+          <fieldset>
+            <legend>What would you use Viera Local for?</legend>
+            <div class="checkbox-grid" id="formInterestGrid">
+              <label><input type="checkbox" name="interests" value="Meeting neighbors" /> Meeting neighbors</label>
+              <label><input type="checkbox" name="interests" value="Local plans and events" /> Local plans and events</label>
+              <label><input type="checkbox" name="interests" value="Dog walks" /> Dog walks</label>
+              <label><input type="checkbox" name="interests" value="Fitness groups" /> Fitness groups</label>
+              <label><input type="checkbox" name="interests" value="Food and social groups" /> Food and social groups</label>
+              <label><input type="checkbox" name="interests" value="Passport rewards" /> Passport stamps & rewards</label>
+              <label><input type="checkbox" name="interests" value="Local partner deals" /> Annual local partner pass</label>
+              <label><input type="checkbox" name="interests" value="The Avenue activities" /> The Avenue activities</label>
+            </div>
+          </fieldset>
+
+          <label>
+            What would help you feel more connected locally?
+            <textarea
+              name="idea"
+              rows="4"
+              placeholder="A group, feature, event, problem to solve, or idea you would love to see..."
+            ></textarea>
+          </label>
+
+          <label class="consent-row">
+            <input type="checkbox" name="consent" required />
+            <span>
+              I understand Viera Local is an independent community project currently
+              being developed.
+            </span>
+          </label>
+
+          <button class="button button--primary button--full" type="submit">
+            Become a Founding Local
+          </button>
+
+          <p class="form-note">
+            This prototype saves submissions only in your browser for demonstration purposes.
+          </p>
+        </form>
+      </section>
+
+      <section class="section vip-section">
+        <div>
+          <p class="eyebrow">Viera Local + Viera VIP</p>
+          <h2>Connection for everyone. Something extra for members.</h2>
+        </div>
+        <p>
+          Viera Local can remain the open neighborhood network, while Viera VIP eventually
+          adds curated experiences, premium partner perks, special Passport rewards,
+          and limited-capacity gatherings.
+        </p>
+        <a class="button button--secondary" href="https://www.vieravip.com/" target="_blank" rel="noopener">
+          Visit Viera VIP
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="brand brand--footer" href="#top">
+          <span class="brand-mark" aria-hidden="true">
+            <span class="brand-mark__sun"></span>
+            <span class="brand-mark__water"></span>
+          </span>
+          <span class="brand-copy">
+            <strong>Viera Local</strong>
+            <small>Your community beyond your building.</small>
+          </span>
+        </a>
+      </div>
+
+      <div class="footer-links">
+        <a href="#neighborhood">Neighborhood</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#passport">Passport</a>
+        <a href="#join">Join</a>
+      </div>
+
+      <p>Independent neighborhood concept · Viera, Florida</p>
+    </footer>
+  </div>
+
+  <div class="modal" id="planModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="planModalTitle">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__card">
+      <button class="modal__close" type="button" data-close-modal aria-label="Close dialog">×</button>
+      <span class="modal__icon">📍</span>
+      <p class="eyebrow">Prototype interaction</p>
+      <h2 id="planModalTitle">Make a Plan</h2>
+      <p id="planModalCopy">
+        In the full platform, residents could choose a time, audience, location,
+        and whether the plan appears inside their community or across the district.
+      </p>
+      <button class="button button--primary button--full" type="button" data-close-modal>
+        Got it
+      </button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
