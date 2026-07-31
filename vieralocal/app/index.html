@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Functional Viera Local resident community pilot." />
+  <title>Viera Local Pilot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="auth-screen" id="authScreen">
+    <div class="auth-art">
+      <div class="auth-brand">
+        <span class="logo-mark"><i></i><b></b></span>
+        <span><strong>Viera Local</strong><small>Your community beyond your building.</small></span>
+      </div>
+      <div class="auth-copy">
+        <p class="eyebrow">Functional pilot</p>
+        <h1>See what is happening at home — and around the neighborhood.</h1>
+        <p>Explore a working resident dashboard with apartment feeds, district conversations, events, groups, Passport stamps, and local plans.</p>
+      </div>
+      <div class="district-mini">
+        <span>Luna</span><span>The Pearl</span><span>Centre Pointe</span><span>Marisol</span>
+      </div>
+    </div>
+
+    <div class="auth-panel">
+      <div class="auth-card">
+        <div class="auth-tabs">
+          <button class="auth-tab is-active" data-auth-tab="demo" type="button">Try Demo</button>
+          <button class="auth-tab" data-auth-tab="register" type="button">Create Account</button>
+        </div>
+
+        <section class="auth-view is-active" data-auth-view="demo">
+          <p class="eyebrow">Choose a resident</p>
+          <h2>Explore the pilot instantly.</h2>
+          <p class="muted">Each demo account begins in a different apartment community.</p>
+
+          <div class="demo-grid">
+            <button class="demo-user" data-user="brandon" type="button">
+              <span class="avatar avatar--coral">BC</span>
+              <span><strong>Brandon</strong><small>Luna at Viera</small></span>
+            </button>
+            <button class="demo-user" data-user="morgan" type="button">
+              <span class="avatar avatar--aqua">MS</span>
+              <span><strong>Morgan</strong><small>The Pearl</small></span>
+            </button>
+            <button class="demo-user" data-user="jordan" type="button">
+              <span class="avatar avatar--green">JT</span>
+              <span><strong>Jordan</strong><small>Centre Pointe</small></span>
+            </button>
+            <button class="demo-user" data-user="alex" type="button">
+              <span class="avatar avatar--gold">AL</span>
+              <span><strong>Alex</strong><small>Marisol</small></span>
+            </button>
+          </div>
+
+          <button class="primary-button full" id="continueDemo" type="button" disabled>Enter Viera Local</button>
+        </section>
+
+        <section class="auth-view" data-auth-view="register">
+          <p class="eyebrow">Pilot registration</p>
+          <h2>Create a local profile.</h2>
+          <form id="registerForm">
+            <label>First name<input name="name" required placeholder="Your first name"></label>
+            <label>Email<input name="email" type="email" required placeholder="you@example.com"></label>
+            <label>Apartment community
+              <select name="community" required>
+                <option value="">Choose one</option>
+                <option>Luna at Viera</option>
+                <option>The Pearl of Viera</option>
+                <option>Centre Pointe</option>
+                <option>Marisol at Viera</option>
+              </select>
+            </label>
+            <label>Choose a few interests
+              <div class="auth-interests">
+                <button type="button" data-register-interest="Dog Parents">🐕 Dog Parents</button>
+                <button type="button" data-register-interest="Foodies">🍴 Foodies</button>
+                <button type="button" data-register-interest="Fitness">💪 Fitness</button>
+                <button type="button" data-register-interest="Events">🎵 Events</button>
+              </div>
+            </label>
+            <button class="primary-button full" type="submit">Create Pilot Account</button>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-shell is-hidden" id="appShell">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand">
+        <span class="logo-mark"><i></i><b></b></span>
+        <span><strong>Viera Local</strong><small>Resident pilot</small></span>
+      </div>
+
+      <nav class="side-nav">
+        <button class="nav-item is-active" data-page="home" type="button"><span>⌂</span>Home</button>
+        <button class="nav-item" data-page="community" type="button"><span>🏢</span>My Community</button>
+        <button class="nav-item" data-page="neighborhood" type="button"><span>◎</span>Neighborhood</button>
+        <button class="nav-item" data-page="events" type="button"><span>▣</span>Events</button>
+        <button class="nav-item" data-page="groups" type="button"><span>#</span>Groups</button>
+        <button class="nav-item" data-page="passport" type="button"><span>✦</span>Passport</button>
+        <button class="nav-item" data-page="notifications" type="button"><span>●</span>Notifications <em id="notificationCount">3</em></button>
+        <button class="nav-item admin-only" data-page="admin" type="button"><span>⚙</span>Admin Preview</button>
+      </nav>
+
+      <div class="side-actions">
+        <button class="new-post-button" id="openComposer" type="button">+ Create</button>
+      </div>
+
+      <button class="profile-card" id="profileButton" type="button">
+        <span class="avatar" id="sidebarAvatar">BC</span>
+        <span><strong id="sidebarName">Brandon</strong><small id="sidebarCommunity">Luna at Viera</small></span>
+        <b>•••</b>
+      </button>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" type="button">☰</button>
+        <div>
+          <p id="todayLabel">Neighborhood dashboard</p>
+          <h2 id="pageTitle">Good afternoon, Brandon.</h2>
+        </div>
+        <div class="top-actions">
+          <button class="search-button" id="searchButton" type="button">⌕ <span>Search</span></button>
+          <button class="profile-bubble" id="profileBubble" type="button">BC</button>
+        </div>
+      </header>
+
+      <section class="page is-active" data-page-panel="home">
+        <div class="hero-banner">
+          <div>
+            <p class="eyebrow">Welcome to your district</p>
+            <h1>What should we do nearby?</h1>
+            <p>See what is happening inside your apartment community and throughout the greater neighborhood.</p>
+          </div>
+          <button class="light-button" data-open-create="event" type="button">Make a Plan</button>
+        </div>
+
+        <div class="home-columns">
+          <section class="home-column">
+            <div class="section-title">
+              <div><p class="eyebrow">Private to residents</p><h3 id="communityColumnTitle">Luna at Viera</h3></div>
+              <button data-go-page="community" type="button">View all</button>
+            </div>
+            <div id="homeCommunityFeed"></div>
+          </section>
+
+          <section class="home-column">
+            <div class="section-title">
+              <div><p class="eyebrow">Across the district</p><h3>Around the Neighborhood</h3></div>
+              <button data-go-page="neighborhood" type="button">View all</button>
+            </div>
+            <div id="homeNeighborhoodFeed"></div>
+          </section>
+        </div>
+
+        <div class="home-bottom-grid">
+          <section class="panel">
+            <div class="section-title">
+              <div><p class="eyebrow">Coming up</p><h3>Nearby events</h3></div>
+              <button data-go-page="events" type="button">Calendar</button>
+            </div>
+            <div id="homeEvents"></div>
+          </section>
+
+          <section class="panel passport-mini-panel">
+            <div>
+              <p class="eyebrow">Your Passport</p>
+              <h3><span id="homeStampCount">3</span> stamps collected</h3>
+              <p class="muted">Two more stamps unlock your first Founding Local reward.</p>
+              <button class="text-link" data-go-page="passport" type="button">View Passport →</button>
+            </div>
+            <div class="progress-ring"><span id="homePassportProgress">3/5</span></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="page" data-page-panel="community">
+        <div class="page-heading">
+          <div><p class="eyebrow">Apartment-only area</p><h1 id="communityPageTitle">Luna at Viera</h1><p>Conversations, events, introductions, and requests visible only to residents of your community.</p></div>
+          <button class="primary-button" data-open-create="post" data-scope="community" type="button">Create Community Post</button>
+        </div>
+        <div class="chat-layout">
+          <div>
+            <div class="scope-tabs">
+              <button class="is-active" data-feed-filter="all" type="button">All Posts</button>
+              <button data-feed-filter="introduction" type="button">Introductions</button>
+              <button data-feed-filter="question" type="button">Questions</button>
+              <button data-feed-filter="meetup" type="button">Meetups</button>
+            </div>
+            <div id="communityFeed"></div>
+          </div>
+          <aside class="chat-sidebar">
+            <div class="panel">
+              <p class="eyebrow">Community chat</p>
+              <h3>Apartment Lounge</h3>
+              <div class="mini-chat" id="communityChat"></div>
+              <form class="mini-chat-form" data-chat="community">
+                <input required placeholder="Write a quick message...">
+                <button type="submit">Send</button>
+              </form>
+            </div>
+            <div class="panel">
+              <p class="eyebrow">Community pulse</p>
+              <div class="stat-row"><span>Residents in pilot</span><strong id="communityResidentCount">38</strong></div>
+              <div class="stat-row"><span>Plans this month</span><strong>7</strong></div>
+              <div class="stat-row"><span>Active groups</span><strong>5</strong></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" data-page-panel="neighborhood">
+        <div class="page-heading">
+          <div><p class="eyebrow">Shared district area</p><h1>The Neighborhood</h1><p>Connect across Luna, The Pearl, Centre Pointe, and Marisol—and make plans at Lakeside, The Avenue, Urban Prime, Sweat Haven, and the dog park.</p></div>
+          <button class="primary-button" data-open-create="post" data-scope="neighborhood" type="button">Create Neighborhood Post</button>
+        </div>
+        <div class="chat-layout">
+          <div>
+            <div class="scope-tabs">
+              <button class="is-active" data-neighborhood-filter="all" type="button">Everything</button>
+              <button data-neighborhood-filter="event" type="button">Plans</button>
+              <button data-neighborhood-filter="recommendation" type="button">Recommendations</button>
+              <button data-neighborhood-filter="question" type="button">Questions</button>
+            </div>
+            <div id="neighborhoodFeed"></div>
+          </div>
+          <aside class="chat-sidebar">
+            <div class="panel">
+              <p class="eyebrow">District chat</p>
+              <h3>Neighborhood Lounge</h3>
+              <div class="mini-chat" id="neighborhoodChat"></div>
+              <form class="mini-chat-form" data-chat="neighborhood">
+                <input required placeholder="Message the neighborhood...">
+                <button type="submit">Send</button>
+              </form>
+            </div>
+            <div class="panel places-panel">
+              <p class="eyebrow">Popular nearby</p>
+              <button data-place="Lakeside Social" type="button">🌅 Lakeside Social</button>
+              <button data-place="The Avenue Viera" type="button">🎬 The Avenue Viera</button>
+              <button data-place="Urban Prime" type="button">🍽️ Urban Prime</button>
+              <button data-place="Sweat Haven" type="button">💪 Sweat Haven</button>
+              <button data-place="Dog Park" type="button">🐕 Dog Park</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" data-page-panel="events">
+        <div class="page-heading">
+          <div><p class="eyebrow">Make plans nearby</p><h1>Events & Meetups</h1><p>Browse apartment events, neighborhood outings, and resident-created plans.</p></div>
+          <button class="primary-button" data-open-create="event" type="button">Create Event</button>
+        </div>
+
+        <div class="event-filters">
+          <button class="is-active" data-event-filter="all" type="button">All Events</button>
+          <button data-event-filter="community" type="button">My Community</button>
+          <button data-event-filter="neighborhood" type="button">Neighborhood</button>
+          <button data-event-filter="going" type="button">I’m Going</button>
+        </div>
+        <div class="events-grid" id="eventsGrid"></div>
+      </section>
+
+      <section class="page" data-page-panel="groups">
+        <div class="page-heading">
+          <div><p class="eyebrow">Interest-based spaces</p><h1>Groups & Channels</h1><p>Join focused conversations without turning the main feeds into one giant chat room.</p></div>
+          <button class="primary-button" id="createGroupButton" type="button">Suggest a Group</button>
+        </div>
+        <div class="groups-grid" id="groupsGrid"></div>
+      </section>
+
+      <section class="page" data-page-panel="passport">
+        <div class="passport-hero">
+          <div>
+            <p class="eyebrow">Founding District Edition</p>
+            <h1>Viera Local Passport</h1>
+            <p>Collect stamps by participating, meeting neighbors, exploring nearby places, and supporting the district.</p>
+          </div>
+          <div class="passport-card">
+            <span class="passport-seal">VL</span>
+            <small>COMMUNITY PASSPORT</small>
+            <h2 id="passportUserName">Brandon</h2>
+            <p id="passportCommunityName">Luna at Viera</p>
+          </div>
+        </div>
+
+        <div class="passport-layout">
+          <section class="panel">
+            <div class="section-title">
+              <div><p class="eyebrow">Your collection</p><h3>Passport stamps</h3></div>
+              <span class="level-pill">Level 1 · Founding Local</span>
+            </div>
+            <div class="stamps-grid" id="stampsGrid"></div>
+          </section>
+
+          <aside>
+            <section class="panel reward-panel">
+              <p class="eyebrow">Next reward</p>
+              <h3>Founding Local Perk</h3>
+              <p>Collect 5 stamps to unlock a pilot reward and early-access badge.</p>
+              <div class="reward-progress"><i id="rewardProgressBar"></i></div>
+              <strong id="rewardProgressText">3 of 5 stamps</strong>
+            </section>
+            <section class="panel">
+              <p class="eyebrow">Future Local Perks Pass</p>
+              <h3>Example partner offers</h3>
+              <div class="offer-list">
+                <div><span>🍽️</span><p><strong>Dining offer</strong><small>Single-use partner deal</small></p></div>
+                <div><span>🎬</span><p><strong>Movie-night perk</strong><small>Entertainment add-on</small></p></div>
+                <div><span>💪</span><p><strong>Fitness trial</strong><small>Try something new nearby</small></p></div>
+              </div>
+              <small class="disclaimer">Examples only. No businesses are currently partnered with this pilot.</small>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" data-page-panel="notifications">
+        <div class="page-heading">
+          <div><p class="eyebrow">Stay informed without the noise</p><h1>Notifications</h1><p>Replies, event updates, community announcements, and Passport progress.</p></div>
+          <button class="secondary-button" id="markAllRead" type="button">Mark all read</button>
+        </div>
+        <div class="panel notification-list" id="notificationList"></div>
+      </section>
+
+      <section class="page" data-page-panel="admin">
+        <div class="page-heading">
+          <div><p class="eyebrow">Pilot moderation</p><h1>Admin Preview</h1><p>A lightweight look at how reports, users, posts, events, and stamps could be managed.</p></div>
+        </div>
+        <div class="admin-stats">
+          <div><span>128</span><small>Pilot residents</small></div>
+          <div><span>34</span><small>Posts this week</small></div>
+          <div><span>12</span><small>Upcoming events</small></div>
+          <div><span>2</span><small>Open reports</small></div>
+        </div>
+        <div class="admin-grid">
+          <section class="panel">
+            <p class="eyebrow">Moderation queue</p>
+            <h3>Open reports</h3>
+            <div class="admin-row"><span>Neighborhood post</span><strong>Possible advertising</strong><button type="button">Review</button></div>
+            <div class="admin-row"><span>User report</span><strong>Unwanted direct message</strong><button type="button">Review</button></div>
+          </section>
+          <section class="panel">
+            <p class="eyebrow">Passport controls</p>
+            <h3>Award a stamp</h3>
+            <label>Resident<select><option>Brandon C.</option><option>Morgan S.</option><option>Jordan T.</option></select></label>
+            <label>Stamp<select><option>Meet Me at Lakeside</option><option>Avenue Adventurer</option><option>Dog Park Local</option></select></label>
+            <button class="primary-button full" id="adminAwardStamp" type="button">Award Demo Stamp</button>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="composerModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card composer-card">
+      <button class="modal-close" data-close-modal type="button">×</button>
+      <p class="eyebrow">Create something local</p>
+      <h2 id="composerTitle">Create a Post</h2>
+      <form id="composerForm">
+        <input type="hidden" name="contentType" value="post">
+        <label>Where should this appear?
+          <select name="scope" id="composerScope">
+            <option value="community">My Community</option>
+            <option value="neighborhood">The Neighborhood</option>
+            <option value="group">A Group</option>
+          </select>
+        </label>
+        <label id="groupSelectWrap" class="is-hidden">Choose group
+          <select name="group">
+            <option>Dog Parents</option>
+            <option>Foodies</option>
+            <option>Fitness & Wellness</option>
+            <option>New to Viera</option>
+          </select>
+        </label>
+        <label>Type
+          <select name="type" id="composerType">
+            <option value="general">General post</option>
+            <option value="introduction">Introduction</option>
+            <option value="question">Question</option>
+            <option value="recommendation">Recommendation</option>
+            <option value="meetup">Meetup</option>
+          </select>
+        </label>
+        <label>Title<input name="title" required placeholder="Give it a clear title"></label>
+        <label>Details<textarea name="body" required rows="5" placeholder="What should neighbors know?"></textarea></label>
+        <div class="event-fields is-hidden" id="eventFields">
+          <label>Date<input name="date" type="date"></label>
+          <label>Time<input name="time" type="time"></label>
+          <label>Location<input name="location" placeholder="Public meeting place"></label>
+        </div>
+        <button class="primary-button full" type="submit">Publish to Pilot</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="detailModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-detail></div>
+    <div class="modal-card">
+      <button class="modal-close" data-close-detail type="button">×</button>
+      <div id="detailContent"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="profileModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-profile></div>
+    <div class="modal-card">
+      <button class="modal-close" data-close-profile type="button">×</button>
+      <p class="eyebrow">Your pilot profile</p>
+      <div class="profile-modal-head"><span class="avatar avatar--large" id="profileAvatar">BC</span><div><h2 id="profileName">Brandon</h2><p id="profileCommunity">Luna at Viera</p></div></div>
+      <div class="profile-tags" id="profileTags"></div>
+      <button class="secondary-button full" id="logoutButton" type="button">Log out of Demo</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
