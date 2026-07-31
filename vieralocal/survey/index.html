@@ -58,6 +58,25 @@
     </section>
 
     <section class="screen" id="surveyScreen">
+      <div class="mobile-survey-header">
+        <button class="mobile-sections-button" id="mobileSectionsButton" type="button" aria-expanded="false">
+          <span>☰</span> Sections
+        </button>
+
+        <div class="mobile-progress-summary">
+          <strong id="mobileCompletionPercent">0%</strong>
+          <span><b id="mobileAnsweredCount">0</b>/<b id="mobileTotalQuestionCount">35</b> answered</span>
+        </div>
+
+        <button class="mobile-save-button" id="mobileSaveButton" type="button">Save</button>
+      </div>
+
+      <div class="mobile-progress-track">
+        <i id="mobileProgressBar"></i>
+      </div>
+
+      <div class="survey-drawer-backdrop" id="surveyDrawerBackdrop"></div>
+
       <div class="survey-layout">
         <aside class="survey-sidebar">
           <p class="eyebrow light">Your survey journey</p>
@@ -88,6 +107,20 @@
           <div class="survey-nav-buttons">
             <button class="secondary-button" id="previousButton">← Previous</button>
             <button class="primary-button" id="nextButton">Next section →</button>
+          </div>
+
+          <div class="mobile-bottom-nav" aria-label="Mobile survey navigation">
+            <button class="mobile-bottom-button" id="mobilePreviousButton" type="button">
+              <span>←</span> Previous
+            </button>
+
+            <button class="mobile-bottom-button mobile-bottom-button--save" id="mobileSubmitButton" type="button">
+              Submit
+            </button>
+
+            <button class="mobile-bottom-button mobile-bottom-button--next" id="mobileNextButton" type="button">
+              Next <span>→</span>
+            </button>
           </div>
         </section>
       </div>

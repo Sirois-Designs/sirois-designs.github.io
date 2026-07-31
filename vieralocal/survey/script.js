@@ -3,6 +3,40 @@ const STORAGE = {
   responses: "vieraLocalSurveyResponses"
 };
 
+/* =========================================================
+   SAFE BROWSER STORAGE
+   Allows the survey to run from local files even when a
+   browser blocks localStorage for file:// pages.
+   ========================================================= */
+
+const memoryStorage = {};
+
+function storageGet(key) {
+  try {
+    return window.localStorage.getItem(key);
+  } catch (error) {
+    return Object.prototype.hasOwnProperty.call(memoryStorage, key)
+      ? memoryStorage[key]
+      : null;
+  }
+}
+
+function storageSet(key, value) {
+  try {
+    window.localStorage.setItem(key, value);
+  } catch (error) {
+    memoryStorage[key] = value;
+  }
+}
+
+function storageRemove(key) {
+  try {
+    window.localStorage.removeItem(key);
+  } catch (error) {
+    delete memoryStorage[key];
+  }
+}
+
 const sections = [
   {
     title: "Current resident experience",
@@ -175,12 +209,12 @@ function sectionAnswered(section) {
 }
 
 function saveDraft() {
-  localStorage.setItem(STORAGE.draft, JSON.stringify(state));
+  storageSet(STORAGE.draft, JSON.stringify(state));
   $("#resumeButton").style.display = "inline-flex";
 }
 
 function loadDraft() {
-  const draft = JSON.parse(localStorage.getItem(STORAGE.draft) || "null");
+  const draft = JSON.parse(storageGet(STORAGE.draft) || "null");
   if (!draft) return false;
   state = {
     ...draft,
@@ -190,7 +224,7 @@ function loadDraft() {
 }
 
 function clearDraft() {
-  localStorage.removeItem(STORAGE.draft);
+  storageRemove(STORAGE.draft);
   state = { sectionIndex: 0, answers: {}, startedAt: null, celebratedSections: [] };
 }
 
@@ -478,11 +512,11 @@ function showReview() {
 }
 
 function getResponses() {
-  return JSON.parse(localStorage.getItem(STORAGE.responses) || "[]");
+  return JSON.parse(storageGet(STORAGE.responses) || "[]");
 }
 
 function saveResponses(responses) {
-  localStorage.setItem(STORAGE.responses, JSON.stringify(responses));
+  storageSet(STORAGE.responses, JSON.stringify(responses));
 }
 
 function submitResponse() {
@@ -612,9 +646,9 @@ function exportCsv() {
   URL.revokeObjectURL(url);
 }
 
-$("#startButton").addEventListener("click", () => { if (!state.startedAt) state.startedAt = new Date().toISOString(); saveDraft(); renderSurvey(); showScreen("surveyScreen"); });
+$("#startButton").addEventListener("click", () => { if (!state.startedAt) state.startedAt = new Date().toISOString(); renderSurvey(); showScreen("surveyScreen"); saveDraft(); });
 $("#previewButton").addEventListener("click", () => openModal("previewModal"));
-$("#startPreviewButton").addEventListener("click", () => { closeModal("previewModal"); if (!state.startedAt) state.startedAt = new Date().toISOString(); saveDraft(); renderSurvey(); showScreen("surveyScreen"); });
+$("#startPreviewButton").addEventListener("click", () => { closeModal("previewModal"); if (!state.startedAt) state.startedAt = new Date().toISOString(); renderSurvey(); showScreen("surveyScreen"); saveDraft(); });
 $("#resumeButton").addEventListener("click", () => { if (!loadDraft()) return showToast("No saved survey found."); renderSurvey(); showScreen("surveyScreen"); });
 $("#dashboardButton").addEventListener("click", () => { renderDashboard(); showScreen("dashboardScreen"); });
 $("#previousButton").addEventListener("click", () => { if (state.sectionIndex > 0) { state.sectionIndex--; saveDraft(); renderSurvey(); window.scrollTo({ top: 0, behavior: "smooth" }); } });
@@ -627,13 +661,122 @@ $("#returnButton").addEventListener("click", () => { renderSurvey(); showScreen(
 $("#finalSubmitButton").addEventListener("click", submitResponse);
 $("#thanksDashboardButton").addEventListener("click", () => { renderDashboard(); showScreen("dashboardScreen"); });
 $("#newResponseButton").addEventListener("click", () => { clearDraft(); showScreen("welcomeScreen"); });
-$("#dashboardBackButton").addEventListener("click", () => showScreen(localStorage.getItem(STORAGE.draft) ? "surveyScreen" : "welcomeScreen"));
+$("#dashboardBackButton").addEventListener("click", () => showScreen(storageGet(STORAGE.draft) ? "surveyScreen" : "welcomeScreen"));
 $("#sampleDataButton").addEventListener("click", addSampleData);
 $("#exportButton").addEventListener("click", exportCsv);
 $("#commentFilter").addEventListener("change", renderComments);
-$("#deleteResponsesButton").addEventListener("click", () => { if (confirm("Delete all responses saved in this browser?")) { localStorage.removeItem(STORAGE.responses); renderDashboard(); } });
+$("#deleteResponsesButton").addEventListener("click", () => { if (confirm("Delete all responses saved in this browser?")) { storageRemove(STORAGE.responses); renderDashboard(); } });
 $$('[data-close]').forEach(element => element.addEventListener("click", () => closeModal(element.dataset.close)));
 document.addEventListener("keydown", event => { if (event.key === "Escape") $$(".modal.open").forEach(modal => modal.classList.remove("open")); });
 
 renderPreview();
-$("#resumeButton").style.display = localStorage.getItem(STORAGE.draft) ? "inline-flex" : "none";
+$("#resumeButton").style.display = storageGet(STORAGE.draft) ? "inline-flex" : "none";
+
+
+/* =========================================================
+   MOBILE SURVEY NAVIGATION
+   ========================================================= */
+
+const mobileSectionsButton = document.getElementById("mobileSectionsButton");
+const mobileSaveButton = document.getElementById("mobileSaveButton");
+const mobilePreviousButton = document.getElementById("mobilePreviousButton");
+const mobileNextButton = document.getElementById("mobileNextButton");
+const mobileSubmitButton = document.getElementById("mobileSubmitButton");
+const surveyDrawerBackdrop = document.getElementById("surveyDrawerBackdrop");
+const surveySidebar = document.querySelector(".survey-sidebar");
+
+function updateMobileSurveyUi() {
+  const answered = getAnsweredCount();
+  const total = allQuestions.length;
+  const percent = Math.round((answered / total) * 100);
+
+  const mobileAnswered = document.getElementById("mobileAnsweredCount");
+  const mobileTotal = document.getElementById("mobileTotalQuestionCount");
+  const mobilePercent = document.getElementById("mobileCompletionPercent");
+  const mobileBar = document.getElementById("mobileProgressBar");
+
+  if (mobileAnswered) mobileAnswered.textContent = answered;
+  if (mobileTotal) mobileTotal.textContent = total;
+  if (mobilePercent) mobilePercent.textContent = `${percent}%`;
+  if (mobileBar) mobileBar.style.width = `${percent}%`;
+
+  if (mobilePreviousButton) {
+    mobilePreviousButton.disabled = state.sectionIndex === 0;
+  }
+
+  if (mobileNextButton) {
+    mobileNextButton.innerHTML = state.sectionIndex === sections.length - 1
+      ? 'Review <span>→</span>'
+      : 'Next <span>→</span>';
+  }
+}
+
+function openSurveyDrawer() {
+  surveySidebar?.classList.add("is-open");
+  surveyDrawerBackdrop?.classList.add("is-visible");
+  document.body.classList.add("mobile-drawer-open");
+  mobileSectionsButton?.setAttribute("aria-expanded", "true");
+}
+
+function closeSurveyDrawer() {
+  surveySidebar?.classList.remove("is-open");
+  surveyDrawerBackdrop?.classList.remove("is-visible");
+  document.body.classList.remove("mobile-drawer-open");
+  mobileSectionsButton?.setAttribute("aria-expanded", "false");
+}
+
+mobileSectionsButton?.addEventListener("click", () => {
+  if (surveySidebar?.classList.contains("is-open")) {
+    closeSurveyDrawer();
+  } else {
+    openSurveyDrawer();
+  }
+});
+
+surveyDrawerBackdrop?.addEventListener("click", closeSurveyDrawer);
+
+mobileSaveButton?.addEventListener("click", () => {
+  saveDraft();
+  showToast("Your progress was saved.");
+});
+
+mobilePreviousButton?.addEventListener("click", () => {
+  document.getElementById("previousButton")?.click();
+});
+
+mobileNextButton?.addEventListener("click", () => {
+  document.getElementById("nextButton")?.click();
+});
+
+mobileSubmitButton?.addEventListener("click", () => {
+  document.getElementById("submitAnytimeButton")?.click();
+});
+
+document.getElementById("sectionNav")?.addEventListener("click", (event) => {
+  if (event.target.closest("button")) {
+    closeSurveyDrawer();
+  }
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 760) {
+    closeSurveyDrawer();
+  }
+});
+
+// Keep mobile controls synchronized after survey interaction and rendering.
+const originalRenderSurveyForMobile = renderSurvey;
+renderSurvey = function mobileAwareRenderSurvey(...args) {
+  const result = originalRenderSurveyForMobile.apply(this, args);
+  updateMobileSurveyUi();
+  return result;
+};
+
+const originalUpdateProgressForMobile = updateProgress;
+updateProgress = function mobileAwareUpdateProgress(...args) {
+  const result = originalUpdateProgressForMobile.apply(this, args);
+  updateMobileSurveyUi();
+  return result;
+};
+
+updateMobileSurveyUi();
