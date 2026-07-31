@@ -507,7 +507,18 @@ function updateProgress() {
 
 function showReview() {
   $("#reviewCount").textContent = answeredCount();
-  $("#reviewGrid").innerHTML = sections.slice(0, 6).map(section => `<article><strong>${sectionAnswered(section)}/${section.questions.length}</strong><small>${escapeHtml(section.short)}</small></article>`).join("");
+
+  $("#reviewGrid").innerHTML = sections.slice(0, 6).map(section => {
+    const answered = sectionAnswered(section);
+    const complete = answered === section.questions.length;
+
+    return `<article class="${complete ? "review-section-complete" : ""}">
+      ${complete ? '<span class="review-checkmark" aria-label="Section complete">✓</span>' : ''}
+      <strong>${answered}/${section.questions.length}</strong>
+      <small>${escapeHtml(section.short)}</small>
+    </article>`;
+  }).join("");
+
   showScreen("reviewScreen");
 }
 

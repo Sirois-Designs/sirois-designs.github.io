@@ -1043,3 +1043,113 @@ h1, h2, h3 { margin-top: 0; font-family: "Nunito", sans-serif; line-height: 1.05
     font-size: 0.58rem;
   }
 }
+
+
+/* =========================================================
+   MOBILE POLISH — V3.3
+   ========================================================= */
+
+/* Make both sidebar actions feel equally intentional. */
+.sidebar-actions .submit-anytime-button {
+  width: 100%;
+}
+
+/* Praise fully completed sections on the review screen. */
+.review-grid article {
+  position: relative;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.review-grid article.review-section-complete {
+  border: 1px solid rgba(105, 168, 120, 0.34);
+  background: rgba(105, 168, 120, 0.13);
+}
+
+.review-checkmark {
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: white;
+  background: var(--green);
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+@media (max-width: 760px) {
+  /* Vertical section list inside the slide-out mobile drawer. */
+  #sectionNav {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    overflow-x: visible;
+    overflow-y: visible;
+  }
+
+  #sectionNav button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* More substantial, easier-to-grab mobile sliders. */
+  .slider-answer input[type="range"],
+  .mini-slider-card input[type="range"] {
+    height: 42px;
+    margin: 2px 0;
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+  }
+
+  .slider-answer input[type="range"]::-webkit-slider-runnable-track,
+  .mini-slider-card input[type="range"]::-webkit-slider-runnable-track {
+    height: 12px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(239, 125, 97, 0.42), rgba(32, 123, 145, 0.28));
+    box-shadow: inset 0 1px 2px rgba(23, 57, 75, 0.13);
+  }
+
+  .slider-answer input[type="range"]::-webkit-slider-thumb,
+  .mini-slider-card input[type="range"]::-webkit-slider-thumb {
+    width: 28px;
+    height: 28px;
+    margin-top: -8px;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 4px solid white;
+    border-radius: 50%;
+    background: var(--coral);
+    box-shadow: 0 3px 10px rgba(23, 57, 75, 0.24);
+  }
+
+  .slider-answer input[type="range"]::-moz-range-track,
+  .mini-slider-card input[type="range"]::-moz-range-track {
+    height: 12px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(239, 125, 97, 0.42), rgba(32, 123, 145, 0.28));
+    box-shadow: inset 0 1px 2px rgba(23, 57, 75, 0.13);
+  }
+
+  .slider-answer input[type="range"]::-moz-range-thumb,
+  .mini-slider-card input[type="range"]::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border: 4px solid white;
+    border-radius: 50%;
+    background: var(--coral);
+    box-shadow: 0 3px 10px rgba(23, 57, 75, 0.24);
+  }
+
+  .sidebar-actions {
+    gap: 9px;
+  }
+
+  .sidebar-actions .secondary-button {
+    min-height: 48px;
+  }
+}
