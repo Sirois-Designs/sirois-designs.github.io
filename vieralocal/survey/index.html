@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viera Local Resident Survey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#">
+      <span class="brand-mark"><i></i><b></b></span>
+      <span><strong>Viera Local</strong><small>Resident Research</small></span>
+    </a>
+    <div class="header-actions">
+      <button class="ghost-button" id="resumeButton">Resume saved survey</button>
+      <button class="ghost-button" id="dashboardButton">Results dashboard</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="screen active" id="welcomeScreen">
+      <div class="welcome-grid">
+        <div>
+          <p class="eyebrow">Help shape your neighborhood</p>
+          <h1>A survey that does not feel like homework.</h1>
+          <p class="lead">Viera Local is being designed to help apartment residents connect inside their own community and across the greater neighborhood. Your answers will help decide what should be built first.</p>
+          <div class="benefits">
+            <p>
+              <span class="benefit-check">✓</span>
+              <span class="benefit-copy"><strong>Every question is optional.</strong> Answer only what matters to you.</span>
+            </p>
+            <p>
+              <span class="benefit-check">✓</span>
+              <span class="benefit-copy"><strong>Submit whenever you want.</strong> You never have to finish every question.</span>
+            </p>
+            <p>
+              <span class="benefit-check">✓</span>
+              <span class="benefit-copy"><strong>Your progress saves automatically.</strong> Return later without starting over.</span>
+            </p>
+          </div>
+          <div class="button-row">
+            <button class="primary-button" id="startButton">Start the survey</button>
+            <button class="secondary-button" id="previewButton">See the sections</button>
+          </div>
+          <p class="small-note">Responses can be anonymous. Contact information is only requested from residents who volunteer to test the early version.</p>
+        </div>
+        <div class="hero-card">
+          <div class="hero-sun"></div>
+          <div class="mini-card one"><small>MY COMMUNITY</small><strong>Pool meetup Friday</strong><span>8 neighbors going</span></div>
+          <div class="mini-card two"><small>THE NEIGHBORHOOD</small><strong>What should we do tonight?</strong><span>Lakeside · The Avenue · Dog Park</span></div>
+          <div class="mini-card three"><span class="stamp">VL</span><strong>Passport progress</strong><small>3 of 5 stamps</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="surveyScreen">
+      <div class="survey-layout">
+        <aside class="survey-sidebar">
+          <p class="eyebrow light">Your survey journey</p>
+          <div class="progress-number">
+            <strong id="answeredCount">0</strong>
+            <span>of <b id="totalQuestionCount">35</b> answered</span>
+          </div>
+          <div class="progress-percent"><strong id="completionPercent">0%</strong> complete</div>
+          <div class="progress-track"><i id="progressBar"></i></div>
+          <p class="progress-message" id="progressMessage">Every answer helps.</p>
+          <nav id="sectionNav"></nav>
+          <div class="sidebar-actions">
+            <button class="secondary-button dark" id="saveExitButton">Save and exit</button>
+            <button class="text-button light" id="submitAnytimeButton">Submit what I have</button>
+          </div>
+        </aside>
+
+        <section class="survey-content">
+          <div class="survey-heading">
+            <div>
+              <p class="eyebrow" id="sectionNumber"></p>
+              <h2 id="sectionTitle"></h2>
+            </div>
+            <button class="ghost-button" id="clearDraftButton">Clear draft</button>
+          </div>
+          <div class="section-note" id="sectionDescription"></div>
+          <form id="surveyForm"><div id="questionList"></div></form>
+          <div class="survey-nav-buttons">
+            <button class="secondary-button" id="previousButton">← Previous</button>
+            <button class="primary-button" id="nextButton">Next section →</button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="screen" id="reviewScreen">
+      <div class="center-card">
+        <p class="eyebrow">You made it this far</p>
+        <h1>Ready to send your answers?</h1>
+        <p>You answered <strong id="reviewCount">0</strong> questions. Submit now or return to answer more.</p>
+        <div class="review-grid" id="reviewGrid"></div>
+        <div class="contact-card">
+          <p class="eyebrow">Optional</p>
+          <h3>Help test the early version</h3>
+          <div class="two-column">
+            <label>First name<input id="contactName" type="text" placeholder="Your first name"></label>
+            <label>Email<input id="contactEmail" type="email" placeholder="you@example.com"></label>
+          </div>
+          <label class="check-line"><input id="contactInterview" type="checkbox"> I would participate in a short interview.</label>
+          <label class="check-line"><input id="contactHost" type="checkbox"> I might help host an early activity.</label>
+        </div>
+        <div class="button-row right">
+          <button class="secondary-button" id="returnButton">Keep answering</button>
+          <button class="primary-button" id="finalSubmitButton">Submit my responses</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="thanksScreen">
+      <div class="center-card thanks-card">
+        <span class="thanks-icon">✓</span>
+        <p class="eyebrow">Survey submitted</p>
+        <h1>Thank you for helping build Viera Local.</h1>
+        <p>Your feedback will guide the first community, neighborhood, event, chat, and Passport features.</p>
+        <div class="badge"><span>VL</span><p><strong>Founding Voice</strong><small>Prototype survey badge</small></p></div>
+        <div class="button-row center">
+          <button class="primary-button" id="thanksDashboardButton">View sample results</button>
+          <button class="secondary-button" id="newResponseButton">Start another response</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="dashboardScreen">
+      <div class="dashboard-heading">
+        <div><p class="eyebrow">Survey response dashboard</p><h1>What residents are telling us</h1><p>This prototype totals responses saved in this browser.</p></div>
+        <div class="button-row"><button class="secondary-button" id="dashboardBackButton">Back</button><button class="secondary-button" id="sampleDataButton">Add sample data</button><button class="primary-button" id="exportButton">Export CSV</button></div>
+      </div>
+      <div class="metric-grid">
+        <article><strong id="responseMetric">0</strong><span>Total responses</span></article>
+        <article><strong id="completionMetric">0%</strong><span>Average completion</span></article>
+        <article><strong id="accountMetric">0%</strong><span>Likely to create account</span></article>
+        <article><strong id="passportMetric">0%</strong><span>Interested in Passport</span></article>
+      </div>
+      <div class="dashboard-grid">
+        <article class="dashboard-panel"><p class="eyebrow">Community need</p><h3>How connected residents feel</h3><div id="connectednessChart"></div></article>
+        <article class="dashboard-panel"><p class="eyebrow">Feature priorities</p><h3>Most requested features</h3><div id="featureRanking"></div></article>
+        <article class="dashboard-panel"><p class="eyebrow">Real-world activity</p><h3>Most appealing activities</h3><div id="activityRanking"></div></article>
+        <article class="dashboard-panel"><p class="eyebrow">Trust & comfort</p><h3>Most requested protections</h3><div id="concernRanking"></div></article>
+        <article class="dashboard-panel wide"><p class="eyebrow">Passport validation</p><h3>Annual pass price expectations</h3><div id="priceChart"></div></article>
+        <article class="dashboard-panel wide"><div class="panel-row"><div><p class="eyebrow">Open responses</p><h3>Resident comments</h3></div><select id="commentFilter"><option value="biggestProblem">Biggest problem to solve</option><option value="reasonNotUse">Reasons not to use it</option><option value="wantedBusinesses">Wanted businesses and destinations</option></select></div><div class="comment-wall" id="commentWall"></div></article>
+      </div>
+      <div class="danger-row"><button class="danger-button" id="deleteResponsesButton">Delete browser responses</button></div>
+    </section>
+  </main>
+
+  <div class="modal" id="previewModal">
+    <div class="modal-backdrop" data-close="previewModal"></div>
+    <div class="modal-card">
+      <button class="modal-close" data-close="previewModal">×</button>
+      <p class="eyebrow">Survey overview</p>
+      <h2>Six core sections plus optional demographics</h2>
+      <div class="preview-grid" id="previewGrid"></div>
+      <button class="primary-button full" id="startPreviewButton">Start the survey</button>
+    </div>
+  </div>
+
+  <div class="modal" id="earlySubmitModal">
+    <div class="modal-backdrop" data-close="earlySubmitModal"></div>
+    <div class="modal-card small-modal">
+      <button class="modal-close" data-close="earlySubmitModal">×</button>
+      <p class="eyebrow">Submit anytime</p>
+      <h2>You can stop here.</h2>
+      <p>We will save the answers you already provided.</p>
+      <div class="button-row right"><button class="secondary-button" data-close="earlySubmitModal">Keep answering</button><button class="primary-button" id="reviewEarlyButton">Review my answers</button></div>
+    </div>
+  </div>
+
+  <div class="section-celebration" id="sectionCelebration" aria-hidden="true">
+    <div class="celebration-burst" id="celebrationBurst"></div>
+    <div class="celebration-card">
+      <span class="celebration-icon" id="celebrationIcon">✓</span>
+      <p class="eyebrow">Section complete</p>
+      <h2 id="celebrationTitle">Nice work!</h2>
+      <p id="celebrationMessage">You completed a whole section.</p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
