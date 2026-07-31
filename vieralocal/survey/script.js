@@ -686,7 +686,7 @@ const surveyDrawerBackdrop = document.getElementById("surveyDrawerBackdrop");
 const surveySidebar = document.querySelector(".survey-sidebar");
 
 function updateMobileSurveyUi() {
-  const answered = getAnsweredCount();
+  const answered = answeredCount();
   const total = allQuestions.length;
   const percent = Math.round((answered / total) * 100);
 
