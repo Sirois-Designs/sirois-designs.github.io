@@ -510,12 +510,14 @@ function showReview() {
 
   $("#reviewGrid").innerHTML = sections.slice(0, 6).map(section => {
     const answered = sectionAnswered(section);
-    const complete = answered === section.questions.length;
+    const complete = section.questions.every(question => hasAnswer(question.id));
+    const cardClass = complete ? "review-section-card is-complete" : "review-section-card";
 
-    return `<article class="${complete ? "review-section-complete" : ""}">
-      ${complete ? '<span class="review-checkmark" aria-label="Section complete">✓</span>' : ''}
+    return `<article class="${cardClass}" data-review-complete="${complete}">
+      ${complete ? '<span class="review-checkmark" aria-hidden="true">✓</span>' : ''}
       <strong>${answered}/${section.questions.length}</strong>
       <small>${escapeHtml(section.short)}</small>
+      ${complete ? '<span class="review-complete-label">Section complete</span>' : ''}
     </article>`;
   }).join("");
 
