@@ -229,7 +229,6 @@ We use:
 * Clear explanations
 * Strong verbs
 * Honest expectations
-* Human language
 * Minimal jargon
 
 We avoid:
