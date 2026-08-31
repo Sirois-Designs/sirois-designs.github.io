@@ -421,7 +421,7 @@ h1,h2,h3 { margin: 0; line-height: .98; }
     min-height: 360px;
     background:
       linear-gradient(rgba(17,44,37,.08), rgba(17,44,37,.08)),
-      url('images/mauston-dam.png') center/cover no-repeat;
+      url('images/mauston-dam-mobile.png') center/cover no-repeat;
   }
   .story-copy { padding: 55px 24px; }
   .timeline div { grid-template-columns: 70px 1fr; }
@@ -690,4 +690,390 @@ a:focus-visible,
   .promise-grid article + article {
     padding: 30px 22px;
   }
+}
+
+
+/* =========================================================
+   REQUEST SERVICE PAGE
+   ========================================================= */
+
+.request-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(105deg, rgba(12,31,26,.98) 0%, rgba(15,41,34,.93) 55%, rgba(15,41,34,.78) 100%),
+    url('https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+  border-bottom: 5px solid var(--red);
+}
+
+.request-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 44px 44px;
+  pointer-events: none;
+}
+
+.request-hero-inner {
+  position: relative;
+  z-index: 2;
+  min-height: 420px;
+  padding: 92px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 70px;
+}
+
+.request-hero-copy {
+  max-width: 790px;
+}
+
+.request-hero h1 {
+  font-family: var(--display);
+  font-size: clamp(4rem, 7vw, 7rem);
+  line-height: .92;
+  text-transform: uppercase;
+  letter-spacing: -.025em;
+  color: #fff;
+}
+
+.request-hero-copy > p:not(.eyebrow) {
+  max-width: 650px;
+  margin: 28px 0 0;
+  color: rgba(255,255,255,.74);
+  font-size: 1.03rem;
+}
+
+.request-hero-badge {
+  width: 190px;
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.48);
+  outline: 1px solid rgba(255,255,255,.18);
+  outline-offset: -10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(4deg);
+  background: rgba(129,14,14,.86);
+  color: #fff;
+  box-shadow: 0 24px 60px rgba(0,0,0,.25);
+}
+
+.request-hero-badge span,
+.request-hero-badge strong,
+.request-hero-badge em {
+  font-family: var(--display);
+  text-transform: uppercase;
+  font-style: normal;
+  letter-spacing: .09em;
+}
+
+.request-hero-badge span {
+  font-size: .8rem;
+}
+
+.request-hero-badge strong {
+  font-size: 2.3rem;
+  line-height: .9;
+  color: var(--cream);
+}
+
+.request-hero-badge em {
+  margin-top: 10px;
+  font-size: .57rem;
+}
+
+.request-form-section {
+  padding: 110px 0;
+  background: var(--paper);
+}
+
+.request-layout {
+  display: grid;
+  grid-template-columns: minmax(280px,.72fr) minmax(0,1.28fr);
+  gap: 76px;
+  align-items: start;
+}
+
+.request-sidebar {
+  position: sticky;
+  top: 145px;
+}
+
+.request-sidebar h2,
+.form-card h2 {
+  font-family: var(--display);
+  text-transform: uppercase;
+  color: var(--forest);
+  letter-spacing: -.015em;
+}
+
+.request-sidebar h2 {
+  font-size: clamp(3rem,4vw,4.7rem);
+}
+
+.request-sidebar > p:not(.eyebrow) {
+  color: var(--muted);
+  margin-top: 22px;
+}
+
+.request-points {
+  margin-top: 40px;
+  border-top: 1px solid var(--line);
+}
+
+.request-points > div {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 16px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.request-points span {
+  font-family: var(--display);
+  font-size: 1.35rem;
+  line-height: 1;
+  font-weight: 800;
+  color: var(--red);
+}
+
+.request-points p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .88rem;
+}
+
+.request-points strong {
+  color: var(--forest);
+}
+
+.request-callout {
+  margin-top: 34px;
+  padding: 26px;
+  background: var(--forest);
+  color: #fff;
+}
+
+.request-callout p {
+  margin: 0 0 4px;
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 800;
+  color: rgba(255,255,255,.64);
+}
+
+.request-callout a {
+  font-family: var(--display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.form-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 58px;
+  box-shadow: var(--shadow);
+}
+
+.form-card-heading {
+  padding-bottom: 30px;
+  margin-bottom: 34px;
+  border-bottom: 1px solid var(--line);
+}
+
+.form-card h2 {
+  font-size: clamp(3rem,4.5vw,5rem);
+}
+
+.formidable-form-slot {
+  min-height: 390px;
+}
+
+/* Only shown in the standalone HTML prototype.
+   Replace this element with the actual shortcode in WordPress. */
+.form-placeholder {
+  min-height: 390px;
+  border: 2px dashed rgba(23,56,47,.22);
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 34px;
+}
+
+.form-placeholder span {
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  font-size: .7rem;
+  font-weight: 800;
+}
+
+.form-placeholder strong {
+  margin: 10px 0 16px;
+  font-family: var(--display);
+  font-size: 2rem;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+
+.form-placeholder code {
+  display: inline-block;
+  max-width: 100%;
+  padding: 10px 13px;
+  background: rgba(23,56,47,.08);
+  color: var(--forest);
+  overflow-wrap: anywhere;
+}
+
+.form-note {
+  border-top: 1px solid var(--line);
+  margin: 30px 0 0;
+  padding-top: 22px;
+  color: var(--muted);
+  font-size: .75rem;
+}
+
+
+/* Friendly defaults for Formidable forms once inserted */
+.form-card .frm_form_field {
+  margin-bottom: 20px;
+}
+
+.form-card .frm_primary_label,
+.form-card label {
+  font-family: var(--body);
+  color: var(--forest);
+  font-weight: 700;
+}
+
+.form-card input[type="text"],
+.form-card input[type="email"],
+.form-card input[type="tel"],
+.form-card input[type="number"],
+.form-card input[type="date"],
+.form-card select,
+.form-card textarea {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid rgba(24,33,29,.22);
+  border-radius: 0;
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  box-shadow: none;
+}
+
+.form-card textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus {
+  outline: 3px solid rgba(199,155,84,.28);
+  border-color: var(--brass);
+}
+
+.form-card .frm_button_submit,
+.form-card button[type="submit"],
+.form-card input[type="submit"] {
+  min-height: 54px;
+  border: 0;
+  border-radius: 0;
+  padding: 0 26px;
+  background: var(--red);
+  color: #fff;
+  font: 800 .82rem var(--body);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.form-card .frm_button_submit:hover,
+.form-card button[type="submit"]:hover,
+.form-card input[type="submit"]:hover {
+  background: var(--red-dark);
+}
+
+@media (max-width: 980px) {
+  .request-hero-inner {
+    min-height: 370px;
+  }
+
+  .request-layout {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .request-sidebar {
+    position: static;
+  }
+
+  .request-sidebar > p:not(.eyebrow) {
+    max-width: 650px;
+  }
+}
+
+@media (max-width: 700px) {
+  .request-hero-inner {
+    min-height: 430px;
+    padding: 76px 0 58px;
+    align-items: flex-end;
+  }
+
+  .request-hero h1 {
+    font-size: clamp(3.5rem,16vw,5rem);
+  }
+
+  .request-hero-copy > p:not(.eyebrow) {
+    font-size: .94rem;
+  }
+
+  .request-hero-badge {
+    display: none;
+  }
+
+  .request-form-section {
+    padding: 75px 0;
+  }
+
+  .request-layout {
+    gap: 38px;
+  }
+
+  .request-sidebar h2,
+  .form-card h2 {
+    font-size: 3rem;
+  }
+
+  .request-points > div {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .form-card {
+    padding: 32px 22px;
+    margin-inline: -2px;
+  }
+
+  .form-placeholder {
+    min-height: 300px;
+    padding: 26px 18px;
+  }
+
 }
