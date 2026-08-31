@@ -417,7 +417,12 @@ h1,h2,h3 { margin: 0; line-height: .98; }
 
   .story-section { padding: 0; }
   .story-section .container { width: 100%; }
-  .story-photo { min-height: 360px; }
+  .story-photo {
+    min-height: 360px;
+    background:
+      linear-gradient(rgba(17,44,37,.08), rgba(17,44,37,.08)),
+      url('images/mauston-dam.png') center/cover no-repeat;
+  }
   .story-copy { padding: 55px 24px; }
   .timeline div { grid-template-columns: 70px 1fr; }
 
